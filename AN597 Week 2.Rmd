@@ -37,6 +37,9 @@ class(m2)
 dim(m2)
 m2
 colnames(m2)
+
+a <- array(data = 1:90, dim = c(5, 6, 3))
+a
 ```
 
 ## Including Plots
