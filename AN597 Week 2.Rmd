@@ -17,7 +17,7 @@ Then, extract every third element of this vector."
 **First, I will use a function to subset the vector of 1 word character strings.**
 
 
-```{r}
+```{r challenge1.1}
 library(stringr)
 v1<- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay", "crossed")
 v1[seq(from = 3, to = 22, by = 3)]
@@ -26,10 +26,70 @@ v1[seq(from = 3, to = 22, by = 3)]
 
 # Challenge 1.2
 "Take a look at the {stringr} package and the function str_split() to see if you can easily divide a single string into a vector of substrings."
-Next, I will use the R package Stringr to extract every third word from one string. 
+**Next, I will use the R package Stringr to extract every third word from one single string.** 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r challenge1.2}
+library(stringr)
+v2<-"Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+v2<-str_split(v2, " ", simplify = TRUE)
+v2[seq(from = 3, to = 22, by = 3)]
+
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Challenge 2.1
+"Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x"
+```{r challenge2.1}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <- m[,c(2,3,6)]
+x
+
+```
+# Challenge 2.2 
+"Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x"
+
+```{r challenge2.2}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <- m[6:8,]
+x
+
+```
+# Challenge 2.3
+"Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x"
+```{r challenge2.3}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <- m[2:6,2:9]
+x
+
+```
+# Challenge 3
+"Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)"
+
+"Given this matrix, what would the following return?"
+* a[1, 1, 1, 2]
+```{r challenge3.1}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[1, 1, 1, 2]
+
+```
+* a[2, 3, 2, ]
+```{r challenge3.2}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[2, 3, 2,]
+
+```
+* a[1:5, 1:5, 3, 3]
+```{r challenge3.3}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[1:5, 1:5, 3, 3]
+
+```
+
+
