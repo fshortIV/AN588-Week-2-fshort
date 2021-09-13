@@ -1,5 +1,5 @@
 ---
-title: "AN597 Week 2"
+title: "AN597 Week 2- fshort"
 output: html_document
 ---
 
@@ -7,44 +7,26 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown Week 2
+## R Week 2 Homework Assignment - Frank Short
 
-This is an R Markdown document to be used for Week 2's Challenges. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Challenge 1.1
+"First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Then, extract every third element of this vector."
 
-```
+**First, I will use a function to subset the vector of 1 word character strings.**
+
+
+```{r}
 library(stringr)
-m <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2)
-m
-m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = FALSE)
-m
-m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE)
-m
+v1<- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay", "crossed")
+v1[seq(from = 3, to = 22, by = 3)]
 
-v1 <- c(1, 2, 3, 4)
-v2 <- c(6, 7, 8, 9)
-m1 <- rbind(v1, v2)
-m1
-
-m2 <- cbind(v1, v2)
-m2
-
-class(m1)
-dim(m1)
-m1
-class(m2)
-dim(m2)
-m2
-colnames(m2)
-
-a <- array(data = 1:90, dim = c(5, 6, 3))
-a
 ```
 
-## Including Plots
-changy change 
-You can also embed plots, for example:
+# Challenge 1.2
+"Take a look at the {stringr} package and the function str_split() to see if you can easily divide a single string into a vector of substrings."
+Next, I will use the R package Stringr to extract every third word from one string. 
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
