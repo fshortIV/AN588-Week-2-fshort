@@ -1,0 +1,168 @@
+---
+title: "AN588 Week 2- fshort"
+author: "Frank Short"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Week 2 Homework Assignment - Frank Short
+
+# Challenge 1.1
+"First, create a vector of 1, word character strings comprising the first line of the novel Ulysses, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+
+Then, extract every third element of this vector."
+
+**First, I will use a function to subset the vector of 1 word character strings.**
+
+
+```{r challenge1.1}
+library(stringr)
+v1<- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay", "crossed")
+
+# Here I use seq to print every third word of the 22 word character separated string. I use "from = 3" to start from the third word instead of the first.
+
+v1[seq(from = 3, to = 22, by = 3)]
+
+```
+
+# Challenge 1.2
+"Take a look at the {stringr} package and the function str_split() to see if you can easily divide a single string into a vector of substrings."
+**Next, I will use the R package Stringr to extract every third word from one single string.** 
+
+```{r challenge1.2}
+library(stringr)
+v2<-"Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+
+# Here I use str_split function to split out the full character string. Note that I set simplify to TRUE, which allows us to still utilize seq. Otherwise I encountered issues when using seq on a list vector.
+
+v2<-str_split(v2, " ", simplify = TRUE)
+v2[seq(from = 3, to = 22, by = 3)]
+
+
+
+```
+
+# Challenge 2.1
+"Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x"
+```{r challenge2.1}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+# I can extract only the three columns I want (2nd, 3rd, and 6th) by leaving the first value empty before ",". 
+
+x <- m[,c(2,3,6)]
+x
+
+```
+# Challenge 2.2 
+"Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x"
+
+```{r challenge2.2}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+# I can extract only the 6th to 8th rows by not including a second value after ",". 
+
+x <- m[6:8,]
+x
+
+```
+# Challenge 2.3
+"Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x"
+```{r challenge2.3}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <- m[2:6,2:9]
+x
+
+```
+# Challenge 3
+"Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)"
+
+"Given this matrix, what would the following return?"
+* a[1, 1, 1, 2]
+```{r challenge3.1}
+# Using "data = 400:1" ensures that the array is in descending order. 
+
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[1, 1, 1, 2]
+
+```
+* a[2, 3, 2, ]
+```{r challenge3.2}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[2, 3, 2,]
+
+```
+* a[1:5, 1:5, 3, 3]
+```{r challenge3.3}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[1:5, 1:5, 3, 3]
+
+```
+
+# Challenge 4
+"Create a list representing this (simplified) primate taxonomy":
+```{r challenge4.1}
+# Creating nested list of Anthropoidea including Platyrrhini and Catarrhini
+Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae","Hylobatidae","Hominidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini)
+names(Anthropoidea) <- list("Platyrrhini","Catarrhini")
+Anthropoidea
+
+# Creating single character vector of Tarsioidea
+Tarsioidea <- c("Tarsiidae")
+Tarsioidea
+
+# Creating nested list of Haplorhini including Anthropoidea and Tarsioidea 
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Haplorhini
+
+# Creating nested list of Strepsirhini containing Lemuroidea and Lorisoidea 
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
+    "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Strepsirhini
+
+# Creating nested list of Primates housing Haplorhini and Strepsirhini, which contains all of the other sub-hierarchies
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+
+```
+# Challenge 5
+"Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix ROW-WISE.
+
+* Then, do the following:
+
++ Coerce the matrix to a data frame.
+
++ As a data frame, coerce the second column to be logical-valued
+
++ As a data frame, coerce the third column to be factor-valued
+
+When you are done, use the str() command to show the data type for each variable in your dataframe."
+```{r challenge5}
+m3 <- matrix(data = c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE)
+# Creating matrix with data entered row-wise. (See byrow = TRUE)
+m3
+# Coercing matrix to be data frame
+m3 <- as.data.frame(m3)
+colnames(m3)
+# Coercing second column to be logical
+m3[,2] <- as.logical(m3$V2)
+# Coercing third column to be a factor
+m3[,3] <- as.factor(m3$V3)
+str(m3)
+
+```
+
+*Lovely code. Great work. Just a little hint if you don't already know, once you create and object it is saved in your global environment, so you don't have to do it over and over (re challenge 2 matrices and challenge 3 arrays). Great work :) -Mel*
