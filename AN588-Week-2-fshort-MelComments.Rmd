@@ -77,6 +77,9 @@ x <- m[2:6,2:9]
 x
 
 ```
+
+*Here you want pull out all the numbers between the points in the matrix (2,2, all the way through 6,9), not just the block inbetween. You can do this by identifying each point in the matrix and then putting the colon between those points: x<-m[2,2]:m[6,9] -Mel*
+
 # Challenge 3
 "Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)"
 
